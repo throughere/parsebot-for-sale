@@ -108,7 +108,6 @@ class Parser:
 
         # get caption if he is exist
         if full_caption and isinstance(full_caption, Tag):
-            if full_caption and isinstance(full_caption, Tag):
             divs = full_caption.find_all("div", limit=2)
             caption = divs[1].text if len(divs) > 1 else None
         else:
