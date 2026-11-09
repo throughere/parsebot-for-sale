@@ -126,7 +126,7 @@ async def create_payment(
                 "productPrice": list(product_price),
             },
         ) as response:
-            return CreateInvoice.from_dict(await response.json())
+            return CreateInvoice.from_dict(await response.json(content_type=None))
 
 
 async def remove_invoice(order_reference: str, merchant_account: str) -> RemoveInvoice:
@@ -142,7 +142,7 @@ async def remove_invoice(order_reference: str, merchant_account: str) -> RemoveI
                 "apiVersion": "1",
             },
         ) as response:
-            return RemoveInvoice.from_dict(await response.json())
+            return RemoveInvoice.from_dict(await response.json(content_type=None))
 
 
 async def get_payment_info(order_reference: str, merchant_account: str) -> CheckStatus:
@@ -158,7 +158,7 @@ async def get_payment_info(order_reference: str, merchant_account: str) -> Check
                 "apiVersion": "1",
             },
         ) as response:
-            return CheckStatus.from_dict(await response.json())
+            return CheckStatus.from_dict(await response.json(content_type=None))
 
 
 @router.callback_query(F.data == "Продовжити підписку 💳")
